@@ -1,0 +1,73 @@
+import java.util.Arrays;
+
+public class main {
+	public static void main(String[] args) {
+
+		int[] array = new int[(int) (Math.round(Math.random() * (8 - 3) + 3))];
+		int total = 0;
+
+		// Part 1
+		Arrays.sort(array);
+
+		for (int i = 0; i < array.length; i++) {
+			array[i] = (int) (Math.round(Math.random() * (10 - 1) + 1));
+		}
+
+		// Part 2
+		System.out.println("Original Array " + Arrays.toString(array));
+		for (int i = 0; i < array.length; i++) {
+			total += array[i];
+		}
+		System.out.println("The values in the array add up to " + total);
+		// Part 3
+		System.out.println("\nOriginal Array " + Arrays.toString(array));
+		String original = "\nOriginal Array " + Arrays.toString(array);
+
+		int numLine = 0;
+
+		while (numLine < array.length) {
+			Arrays.sort(array);
+			
+			if (isPrime(array[numLine]))
+				System.out.println(array[numLine] + "- prime");
+			else if (array[numLine] % 2 == 0)
+				System.out.println(array[numLine] + "- even");
+			else
+				System.out.println(array[numLine] + "- odd");
+
+			numLine++;
+
+		}
+		// Part 4
+		System.out.println(original);
+		int count = 0;
+		int p;
+		
+		for (int m = 0;m < array.length;m++) {
+			for (p=0;p<array.length;p++) {
+				if (array[m]==array[p])
+					count++;
+			}
+			
+		if (m==0 || array[m]!=array[m-1])
+		System.out.println(array[m]+" - "+count);
+		count = 0;
+		}
+
+	}
+
+	public static boolean isPrime(int num) {
+		if (num == 1)
+			return true;
+
+		else if (num < 1)
+			return false;
+
+		for (int i = 2; i <= Math.sqrt(num); i++) {
+			if (num % i == 0)
+				return false;
+		}
+		return true;
+	}
+
+}
